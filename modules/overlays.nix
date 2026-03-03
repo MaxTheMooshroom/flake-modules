@@ -56,11 +56,10 @@ in
     '';
   };
 
-  config.perSystem = { system, inputs', ... }:
-    lib.optionalAttrs (inputs' ? nixpkgs) {
-      _module.args.pkgs = import inputs'.nixpkgs {
-        inherit system;
-        inherit (config) overlays;
-      };
+  config.perSystem = { system, inputs', ... }: {
+    _module.args.pkgs = import inputs'.nixpkgs {
+      inherit system;
+      inherit (config) overlays;
     };
+  };
 }
