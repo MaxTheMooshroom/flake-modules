@@ -21,7 +21,7 @@ using `flakeModules.lib`:
   };
 
   outputs = { nixpkgs-lib, flake-parts, flake-modules, ... }@inputs:
-    flake-parts.lib.mkFlake { inherit system; } {
+    flake-parts.lib.mkFlake { inherit inputs; } {
       # covers the main systems.
       systems = nixpkgs-lib.lib.systems.flakeExposed;
 
@@ -55,7 +55,7 @@ using `flakeModules.overlays`:
   };
 
   outputs = { nixpkgs-lib, flake-parts, flake-modules, ... }@inputs:
-    flake-parts.lib.mkFlake { inherit system; } {
+    flake-parts.lib.mkFlake { inherit inputs; } {
       # covers the main systems.
       systems = nixpkgs-lib.lib.systems.flakeExposed;
 
