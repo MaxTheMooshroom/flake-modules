@@ -61,7 +61,7 @@ using `flakeModules.overlays`:
 
       imports = [ flake-modules.flakeModules.overlays ];
 
-      overlays = [ inputs.my-overlay ];
+      overlays.nixpkgs = [ (import inputs.my-overlay) ];
 
       # Without the flake module, this is how you'd go about applying
       # an overlay to nixpkgs. It's not a lot, but this is about
@@ -72,7 +72,7 @@ using `flakeModules.overlays`:
         _module.args.pkgs = import inputs.nixpkgs {
           inherit system;
 
-          overlays = [ inputs.my-overlay ];
+          overlays = [ (import inputs.my-overlay) ];
         };
       };
     };
